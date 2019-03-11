@@ -23,7 +23,7 @@
 #include <hal_data.h>		/* HAL_DATA_TYPE */
 #include "../hal_halmac.h"	/* Register Definition and etc. */
 
-inline u8 rtl8821c_rcr_config(PADAPTER p, u32 rcr)
+u8 rtl8821c_rcr_config(PADAPTER p, u32 rcr)
 {
 	int err;
 
@@ -35,7 +35,7 @@ inline u8 rtl8821c_rcr_config(PADAPTER p, u32 rcr)
 	return _TRUE;
 }
 
-inline u8 rtl8821c_rcr_get(PADAPTER p, u32 *rcr)
+u8 rtl8821c_rcr_get(PADAPTER p, u32 *rcr)
 {
 	u32 v32;
 
@@ -59,7 +59,7 @@ inline u8 rtl8821c_rcr_check(PADAPTER p, u32 check_bit)
 	return _FALSE;
 }
 
-inline u8 rtl8821c_rcr_add(PADAPTER p, u32 add)
+u8 rtl8821c_rcr_add(PADAPTER p, u32 add)
 {
 	PHAL_DATA_TYPE hal;
 	u32 rcr;
@@ -75,7 +75,7 @@ inline u8 rtl8821c_rcr_add(PADAPTER p, u32 add)
 	return ret;
 }
 
-inline u8 rtl8821c_rcr_clear(PADAPTER p, u32 clear)
+u8 rtl8821c_rcr_clear(PADAPTER p, u32 clear)
 {
 	PHAL_DATA_TYPE hal;
 	u32 rcr;
@@ -92,7 +92,7 @@ inline u8 rtl8821c_rcr_clear(PADAPTER p, u32 clear)
 }
 
 #ifdef CONFIG_XMIT_ACK
-inline u8 rtl8821c_set_mgnt_xmit_ack(_adapter *adapter)
+u8 rtl8821c_set_mgnt_xmit_ack(_adapter *adapter)
 {
 	int err;
 

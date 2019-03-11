@@ -93,7 +93,7 @@ CONFIG_RTW_SDIO_PM_KEEP_POWER = y
 ###################### MP HW TX MODE FOR VHT #######################
 CONFIG_MP_VHT_HW_TX_MODE = n
 ###################### Platform Related #######################
-CONFIG_PLATFORM_I386_PC = y
+CONFIG_PLATFORM_I386_PC = n
 CONFIG_PLATFORM_ARM_RPI = n
 CONFIG_PLATFORM_ARM_RPI3 = n
 CONFIG_PLATFORM_ANDROID_X86 = n
@@ -131,7 +131,7 @@ CONFIG_PLATFORM_SZEBOOK = n
 CONFIG_PLATFORM_ARM_SUNxI = n
 CONFIG_PLATFORM_ARM_SUN6I = n
 CONFIG_PLATFORM_ARM_SUN7I = n
-CONFIG_PLATFORM_ARM_SUN8I_W3P1 = n
+CONFIG_PLATFORM_ARM_SUN8I_W3P1 = y
 CONFIG_PLATFORM_ARM_SUN8I_W5P1 = n
 CONFIG_PLATFORM_ACTIONS_ATM702X = n
 CONFIG_PLATFORM_ACTIONS_ATV5201 = n
@@ -1623,12 +1623,14 @@ _PLATFORM_FILES += platform/platform_ARM_SUNnI_sdio.o
 endif
 
 ARCH := arm
+CROSS_COMPILE := arm-linux-gnueabihf-
 # ===Cross compile setting for Android 4.2 SDK ===
 #CROSS_COMPILE := /home/android_sdk/Allwinner/a23/android-jb42/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
 #KSRC :=/home/android_sdk/Allwinner/a23/android-jb42/lichee/linux-3.4
 # ===Cross compile setting for Android 4.4 SDK ===
-CROSS_COMPILE := /home/android_sdk/Allwinner/a23/android-kk44/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
-KSRC :=/home/android_sdk/Allwinner/a23/android-kk44/lichee/linux-3.4
+KVER  := $(shell uname -r)
+KSRC := /lib/modules/$(KVER)/build
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
 
 ifeq ($(CONFIG_PLATFORM_ARM_SUN8I_W5P1), y)
